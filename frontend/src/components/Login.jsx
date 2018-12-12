@@ -28,6 +28,14 @@ class Login extends Component {
         data: {
           ...this.state
         }
+      }).then(response => {
+        console.log(response);
+        if (response.data.error) {
+          this.setState({ error: response.data.error });
+        } else if (response.data.success) {
+          console.log("success");
+          this.setState({ success: response.data.success });
+        }
       });
     } else {
       console.log("please specify all the fields");
@@ -54,6 +62,9 @@ class Login extends Component {
   render() {
     return (
       <div className="login">
+        {this.state.error && !this.state.success && (
+          <div>ERROR: {this.state.error}</div>
+        )}
         <div>
           <Inputfield type="name" action="Register" submit={this.submit} />
           <Inputfield type="email" action="Register" submit={this.submit} />

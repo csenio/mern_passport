@@ -6,7 +6,7 @@ const cors = require("cors");
 const session = require("express-session");
 const passport = require("passport");
 const bcrypt = require("bcrypt");
-const bcryptSalt = 10;
+const saltRounds = 10;
 const User = require("./models/users");
 require("./configs/passport");
 
